@@ -441,15 +441,6 @@ public class DockNode extends VBox implements EventHandler<MouseEvent> {
 			stage = new Stage();
 			stage.setAlwaysOnTop(dockTitleBar.isAlwaysOnTop());
 
-			EventHandler<WindowEvent> mainWindowCloseHandler = dockPane.getScene().getWindow().getOnCloseRequest();
-			dockPane.getScene().getWindow().setOnCloseRequest(event -> {
-				if (mainWindowCloseHandler != null)
-					mainWindowCloseHandler.handle(event);
-				if (!event.isConsumed()) {
-					stage.close();
-				}
-			});
-
 			stage.titleProperty().bind(titleProperty);
 
 			stage.initStyle(stageStyle);
